@@ -14,10 +14,6 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function (socket) {
-  if(!isRefreshed){
-    io.broadcast.emit('refresh',{});
-    isRefreshed = true;
-  }
   socket.on('chat message', function (msg, color) {
     io.emit('chat message', msg, color);
   });
@@ -30,6 +26,10 @@ setInterval(() => {
   if (io.engine.clientsCount !== userCount) {
     userCount = io.engine.clientsCount;
     io.emit('user count', userCount);
+    if(!isRefreshed){
+      io.emit('refresh',{});
+      isRefreshed = true;
+    }
   }
 
 }, 1000);
