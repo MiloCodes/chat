@@ -10,15 +10,15 @@ var isRefreshed = false;
 var links = [
   {
     command: '!attendance',
-    link: '<a href="attendance.pscs.org">Attendance System</a>',
+    link: '<a target="_blank" href="attendance.pscs.org">Attendance System</a>',
   },
   {
     command: '!manifesto',
-    link: '<a href="https://docs.google.com/document/d/1sAaruzhYcoHRRGTIGUbJcbn1MFx_zi3x4Urf1En2Ty4">Manifesto</a>',
+    link: '<a target="_blank" href="https://docs.google.com/document/d/1sAaruzhYcoHRRGTIGUbJcbn1MFx_zi3x4Urf1En2Ty4">Manifesto</a>',
   },
   {
     command: '!pscsclicker',
-    link: '<a href="https://coderlads.github.io/pscsclicker/">PSCS Clicker</a>',
+    link: '<a target="_blank" href="https://coderlads.github.io/pscsclicker/">PSCS Clicker</a>',
   }
 ];
 
