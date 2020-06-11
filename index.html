@@ -123,6 +123,10 @@
       socket.on('user count' , function(count){
         $('#count').html(count);
       });
+      socket.on('refresh' , function(data){
+        console.log('refresh');
+        location.reload();
+      });
     });
   </script>
 </body>

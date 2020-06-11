@@ -5,18 +5,25 @@ var io = require('socket.io')(http);
 var port = process.env.PORT || 80;
 
 var userCount = 0;
+var isRefreshed = false;
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function (socket) {
+  if(!isRefreshed){
+    io.emit('refresh',{});
+    isRefreshed = true;
+  }
   socket.on('chat message', function (msg, color) {
     io.emit('chat message', msg, color);
   });
 });
+
+
 
 setInterval(() => {
 
@@ -26,6 +33,8 @@ setInterval(() => {
   }
 
 }, 1000);
+
+
 
 http.listen(port, function () {
   console.log('listening on *:' + port);
