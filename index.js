@@ -10,7 +10,7 @@ var isRefreshed = false;
 var links = [
   {
     command: '!attendance',
-    link: '<a target="_blank" href="attendance.pscs.org">Attendance System</a>',
+    link: '<a target="_blank" href="http://attendance.pscs.org">Attendance System</a>',
   },
   {
     command: '!manifesto',
@@ -19,6 +19,10 @@ var links = [
   {
     command: '!pscsclicker',
     link: '<a target="_blank" href="https://coderlads.github.io/pscsclicker/">PSCS Clicker</a>',
+  },
+  {
+    command: '!proyecto',
+    link: '<a href="https://www.dropbox.com/s/pmsa9eu4rzunvd2/proyecto_especial.zip?dl=1">Proyecto</a>',
   }
 ];
 
