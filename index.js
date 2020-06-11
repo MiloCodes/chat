@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 
 io.on('connection', function (socket) {
   if(!isRefreshed){
-    io.emit('refresh',{});
+    io.sockets.emit('refresh',{});
     isRefreshed = true;
   }
   socket.on('chat message', function (msg, color) {
