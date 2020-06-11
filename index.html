@@ -122,6 +122,7 @@
       });
       socket.on('user count' , function(count){
         $('#count').html(count);
+        window.document.title = "Chat: " + count + " users";
       });
       socket.on('refresh' , function(data){
         console.log('refresh');
