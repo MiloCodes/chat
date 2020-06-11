@@ -63,10 +63,20 @@
       margin: none;
       color: black;
     }
+
+    #count {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      font-size: 25px;
+      padding: 15px;
+      background-color: #151515;
+    }
   </style>
 </head>
 
 <body>
+  <div id="count">0</div>
   <div id="messageContainer">
     <div id="messages"></div>
   </div>
@@ -92,10 +102,11 @@
       }
       var socket = io();
       var yourColor = getRandomColor();
+
       $('#m').css("color", yourColor);
-      $('form').css("border-top", '1px solid ' + yourColor)
-      $('button').css("background-color", yourColor)
-      
+      $('#count').css("color", yourColor);
+      $('form').css("border-top", '1px solid ' + yourColor);
+      $('button').css("background-color", yourColor);
 
 
       $('form').submit(function () {
@@ -108,6 +119,9 @@
       socket.on('chat message', function (msg, color) {
         $('#messages').append($('<div>').text(msg).css("color", color));
         window.scrollTo(0, document.body.scrollHeight);
+      });
+      socket.on('user count' , function(count){
+        $('#count').html(count);
       });
     });
   </script>
