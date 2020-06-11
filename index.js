@@ -34,6 +34,12 @@ app.get('/', function (req, res) {
 
 io.on('connection', function (socket) {
   socket.on('chat message', function (msg, color) {
+    if(msg === '!help'){
+      msg = "!help";
+      links.forEach(item => {
+        msg += ", " + item.command;
+      });
+    }
     links.forEach(item => {
       if(item.command === msg){
         msg = item.link;
