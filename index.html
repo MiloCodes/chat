@@ -72,6 +72,9 @@
       padding: 15px;
       background-color: #151515;
     }
+    a {
+      color: inherit;
+    }
   </style>
 </head>
 
@@ -117,7 +120,7 @@
         return false;
       });
       socket.on('chat message', function (msg, color) {
-        $('#messages').append($('<div>').text(msg).css("color", color));
+        $('#messages').append($('<div>').html(msg).css("color", color));
         window.scrollTo(0, document.body.scrollHeight);
       });
       socket.on('user count' , function(count){
