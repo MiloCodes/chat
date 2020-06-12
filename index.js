@@ -29,8 +29,13 @@ var links = [
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/download.html');
+});
+
+app.get('/app', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
+
 
 io.on('connection', function (socket) {
   socket.on('chat message', function (msg, color) {

@@ -15,8 +15,8 @@ function createWindow() {
     },
   })
 
-  win.loadURL('http://proyecto.club')
-  win.webContents.openDevTools()
+  win.loadURL('http://proyecto.club/app')
+  // win.webContents.openDevTools()
 }
 
 app.whenReady().then(createWindow)
