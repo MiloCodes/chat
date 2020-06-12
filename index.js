@@ -1,13 +1,15 @@
-var express = require('express');
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var port = process.env.PORT || 80;
+/* eslint-disable no-console */
+const express = require('express');
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
-var userCount = 0;
-var isRefreshed = false;
+const port = process.env.PORT || 80;
 
-var links = [
+let userCount = 0;
+let isRefreshed = false;
+
+const links = [
   {
     command: '!attendance',
     link: '<a target="_blank" href="http://attendance.pscs.org">Attendance System</a>',
@@ -23,37 +25,34 @@ var links = [
   {
     command: '!proyecto',
     link: '<a href="https://www.dropbox.com/s/pmsa9eu4rzunvd2/proyecto_especial.zip?dl=1">Proyecto</a>',
-  }
+  },
 ];
 
 app.use(express.static('public'));
 
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
+app.get('/', (req, res) => {
+  res.sendFile(`${__dirname}/index.html`);
 });
 
-io.on('connection', function (socket) {
-  socket.on('chat message', function (msg, color) {
-    if(msg === '!help'){
-      msg = "!help";
-      links.forEach(item => {
-        msg += ", " + item.command;
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg, color) => {
+    let finalMsg = msg;
+    if (msg === '!help') {
+      links.forEach((item) => {
+        finalMsg += `, ${item.command}`;
       });
     }
-    links.forEach(item => {
-      if(item.command === msg){
-        msg = item.link;
+    links.forEach((item) => {
+      if (item.command === msg) {
+        finalMsg = item.link;
       }
     });
 
-    io.emit('chat message', msg, color);
+    io.emit('chat message', finalMsg, color);
   });
 });
 
-
-
 setInterval(() => {
-
   if (io.engine.clientsCount !== userCount) {
     userCount = io.engine.clientsCount;
     io.emit('user count', userCount);
@@ -62,11 +61,8 @@ setInterval(() => {
       isRefreshed = true;
     }
   }
-
 }, 1000);
 
-
-
-http.listen(port, function () {
-  console.log('listening on *:' + port);
+http.listen(port, () => {
+  console.log(`listening on *:${port}`);
 });

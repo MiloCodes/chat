@@ -1,6 +1,8 @@
-const { app, BrowserWindow } = require('electron')
+/* eslint-disable no-console */
+const { app, BrowserWindow } = require('electron');
 const DiscordRPC = require('discord-rpc');
-const keys = require(__dirname + '/keys.json');
+
+const keys = require('./keys.json');
 
 let win;
 
@@ -9,17 +11,17 @@ function createWindow() {
     width: 800,
     height: 600,
     autoHideMenuBar: true,
-    icon: __dirname + "/icon.png",
+    icon: `${__dirname}/icon.png`,
     webPreferences: {
-      nodeIntegration: false
+      nodeIntegration: false,
     },
-  })
+  });
 
-  win.loadURL('http://proyecto.club')
-  win.webContents.openDevTools()
+  win.loadURL('http://proyecto.club');
+  win.webContents.openDevTools();
 }
 
-app.whenReady().then(createWindow)
+app.whenReady().then(createWindow);
 
 const clientId = keys.discordId;
 
@@ -33,9 +35,9 @@ async function setActivity() {
     return;
   }
   if (win.title) {
-    let currentUsers = win.title.substring(6, 7);
-    let userUsers = currentUsers > 2 ? 'users' : 'user';
-    let stateMessage = currentUsers > 1 ? `with ${currentUsers - 1} ${userUsers}` : 'alone';
+    const currentUsers = win.title.substring(6, 7);
+    const userUsers = currentUsers > 2 ? 'users' : 'user';
+    const stateMessage = currentUsers > 1 ? `with ${currentUsers - 1} ${userUsers}` : 'alone';
 
     rpc.setActivity({
       details: 'Currently chatting',
