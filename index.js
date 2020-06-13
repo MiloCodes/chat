@@ -49,7 +49,14 @@ io.on('connection', function (socket) {
       links.forEach(item => {
         msg += ", " + item.command;
       });
+    } else if(msg.startsWith('/link ')){
+      msg = '<a href="' + msg.split("/link ")[1] + '" > ' + msg.split("/link ")[1] + '</a>';
+    } else if(msg.startsWith('/image ')){
+      msg = '<img src="' + msg.split("/image ")[1] + '" />';
+    } else if(msg.startsWith('/video ')){
+      msg = '<video src="' + msg.split("/video ")[1] + '" />';
     }
+
     links.forEach(item => {
       if(item.command === msg){
         msg = item.link;
