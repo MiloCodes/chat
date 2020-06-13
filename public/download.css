@@ -6,15 +6,21 @@ body {
   background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(87,108,117,1) 0%, rgba(37,50,55,1) 100.2% );
 }
 body {
-  display: initial;
+  display: flex;
 }
-a{
-    position: fixed;
-    bottom: 355px;
-    left: 44%;
+
+#dl{
+    margin: auto;
+    width: 600px;
+    height: 80px;
+    justify-content: space-evenly;
+    display: flex;
+}
+
+a {
     font-size: 25px;
     background-color: rgba(24, 32, 35, 0.3);
-    padding: 3%;
+    padding: 19px;
     border-radius: 15px;
     text-decoration: none;
     color: white;
