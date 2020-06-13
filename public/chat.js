@@ -24,6 +24,12 @@ $(function () {
             if ($('#m').val().startsWith("/color ")) {
                 yourColor = $('#m').val().split(' ')[1];
                 updateColor();
+            } else if ($('#m').val().startsWith("/clear")) {
+                $('#messages').empty();
+                $('#messages').append($('<div>').html('Chat cleared.').css("color", yourColor));
+                setTimeout(() => {
+                    $('#messages').empty();
+                }, 700);
             } else {
                 socket.emit('chat message', $('#m').val(), yourColor);
             }
