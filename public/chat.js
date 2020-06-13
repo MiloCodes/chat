@@ -11,8 +11,7 @@ $(function () {
 
     function updateColor() {
         $('#m').css("color", yourColor);
-        $('#count').css("color", yourColor);
-        /*$('form').css("border-top", '1px solid ' + yourColor);*/
+        $('#type').css("border-color", yourColor);
         $('button').css("background-color", yourColor);
     }
 
@@ -37,10 +36,12 @@ $(function () {
         $('#messages').append($('<div>').html(msg).css("color", color));
         $('html, body').scrollTop($(document).height());
     });
+
     socket.on('user count', function (count) {
-        $('#count').html(count);
+        $('#m').attr('placeholder',"Message " + count +  " users... ");
         window.document.title = "Chat: " + count + " users";
     });
+
     socket.on('refresh', function (data) {
         console.log('refresh');
         location.reload();

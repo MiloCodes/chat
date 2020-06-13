@@ -36,8 +36,13 @@ app.get('/app', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/count', function (req, res) {
+  res.send({ users: userCount });
+});
+
 
 io.on('connection', function (socket) {
+  io.emit('user count', userCount);
   socket.on('chat message', function (msg, color) {
     if(msg === '!help'){
       msg = "!help";
