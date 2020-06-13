@@ -29,7 +29,7 @@ body {
 #messages {
   margin-bottom: 50px
 }
-
+/*
 form {
   height: 50px;
   width: 100%;
@@ -37,12 +37,13 @@ form {
   bottom: 0;
   color: limegreen;
   display: inline-flex;
+  visibility: hidden;
 }
-
+*/
 input {
-  width: 100%;
+  width: 90%;
   resize: horizontal;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.0);
   font-size: 20px;
   padding: 8px;
   border: none;
@@ -54,18 +55,30 @@ button {
   width: 100px;
   border: none;
   padding: none;
-  margin: none;
   color: black;
 }
 
 #count {
   position: fixed;
   top: 0px;
-  right: 0px;
+  right: 20px;
   font-size: 25px;
   padding: 15px;
-  background-color: #151515;
+  background-color: rgba(24, 32, 35, 0.8);
+  border-radius: 0px 0px 5px 5px;
 }
 a {
   color: inherit;
+}
+
+#type {
+  position: fixed;
+  bottom: 0px;
+  font-size: 25px;
+  padding: 15px;
+  background-color: rgba(24, 32, 35, 0.8);
+  border-radius: 10px 10px 0px 0px;
+  width: 80%;
+  height: 40px;
+  right: 10%;
 }

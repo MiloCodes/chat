@@ -12,14 +12,13 @@ $(function () {
     function updateColor() {
         $('#m').css("color", yourColor);
         $('#count').css("color", yourColor);
-        $('form').css("border-top", '1px solid ' + yourColor);
+        /*$('form').css("border-top", '1px solid ' + yourColor);*/
         $('button').css("background-color", yourColor);
     }
 
     var socket = io();
     var yourColor = getRandomColor();
     updateColor();
-    
 
     $('form').submit(function () {
         if ($('#m').val()) {
