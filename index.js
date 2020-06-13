@@ -37,7 +37,7 @@ app.get('/app', function (req, res) {
 });
 
 app.get('/count', function (req, res) {
-  res.send({ users: userCount });
+  res.send({"users":userCount});
 });
 
 

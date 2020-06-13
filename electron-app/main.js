@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require('electron')
 const DiscordRPC = require('discord-rpc');
 const keys = require(__dirname + '/keys.json');
+const request = require('request');
 
 let win;
 
@@ -16,7 +17,7 @@ function createWindow() {
   })
 
   win.loadURL('http://proyecto.club/app')
-  // win.webContents.openDevTools()
+  win.webContents.openDevTools()
 }
 
 app.whenReady().then(createWindow)
@@ -33,13 +34,26 @@ async function setActivity() {
     return;
   }
   
-  // let currentUsers = win.title.substring(6, 7);
-  // let userUsers = currentUsers > 2 ? 'users' : 'user';
-  // let stateMessage = currentUsers > 1 ? `with ${currentUsers - 1} ${userUsers}` : 'alone';
+  let currentUsers;
+  let url = "http://proyecto.club/count"
+  request({
+    url: url,
+    json: true
+  },
+  function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      let json = JSON.parse(body);
+      console.log(json);
+      currentUsers = body.substring(9, 10);
+    }
+  })
+
+  let userUsers = currentUsers > 2 ? 'users' : 'user';
+  let stateMessage = currentUsers > 1 ? `with ${currentUsers - 1} ${userUsers}` : 'alone';
 
   rpc.setActivity({
     details: 'Currently chatting',
-    // state: stateMessage,
+    state: stateMessage,
     startTimestamp,
     largeImageKey: 'logo',
     largeImageText: 'Chatting anonymously',

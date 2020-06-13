@@ -13,13 +13,14 @@ body {
   margin: 0;
   padding: 0;
   color: white;
-  font-size: 20px;
+  font-size: 22px;
 
 }
 
 #messages div {
   padding: 5px 10px;
   overflow-wrap: anywhere;
+  /*border-radius: 0px 8px 8px 0px;*/
 }
 
 #messages div:nth-child(odd) {
@@ -31,7 +32,7 @@ body {
 }
 
 input {
-  width: 100%;
+  width: 91%;
   resize: horizontal;
   background-color: rgba(0, 0, 0, 0.0);
   font-size: 20px;
