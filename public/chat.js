@@ -38,8 +38,9 @@ $(function () {
     });
 
     socket.on('user count', function (count) {
-        $('#m').attr('placeholder',"Message " + count +  " users... ");
-        window.document.title = "Chat: " + count + " users";
+        let currentCount = count-1;
+        $('#m').attr('placeholder',"Message " + currentCount +  " users... ");
+        // window.document.title = "Chat: " + count + " users";
     });
 
     socket.on('refresh', function (data) {

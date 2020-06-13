@@ -4,6 +4,7 @@ const keys = require(__dirname + '/keys.json');
 const request = require('request');
 
 let win;
+let currentUsers;
 
 function createWindow() {
   win = new BrowserWindow({
@@ -17,7 +18,7 @@ function createWindow() {
   })
 
   win.loadURL('http://proyecto.club/app')
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 }
 
 app.whenReady().then(createWindow)
@@ -33,20 +34,18 @@ async function setActivity() {
   if (!rpc || !win) {
     return;
   }
-  
-  let currentUsers;
+
+ 
   let url = "http://proyecto.club/count"
   request({
     url: url,
     json: true
   },
-  function (error, response, body) {
-    if (!error && response.statusCode === 200) {
-      let json = JSON.parse(body);
-      console.log(json);
-      currentUsers = body.substring(9, 10);
-    }
-  })
+    function (error, response, body) {
+      if (!error && response.statusCode === 200) {
+        currentUsers = body.users;
+      }
+    })
 
   let userUsers = currentUsers > 2 ? 'users' : 'user';
   let stateMessage = currentUsers > 1 ? `with ${currentUsers - 1} ${userUsers}` : 'alone';
@@ -61,12 +60,12 @@ async function setActivity() {
     // smallImageText: '',
     instance: false,
   });
-  
+
 }
 
 rpc.on('ready', () => {
   setActivity();
-  
+
   // activity can only be set every 15 seconds
   setInterval(() => {
     setActivity();
