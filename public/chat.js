@@ -23,6 +23,9 @@ $(function () {
         if ($('#m').val()) {
             if ($('#m').val().startsWith("/color ")) {
                 yourColor = $('#m').val().split(' ')[1];
+                if (yourColor === 'random'){
+                    yourColor = getRandomColor();
+                }
                 updateColor();
             } else if ($('#m').val().startsWith("/clear")) {
                 $('#messages').empty();
