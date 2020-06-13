@@ -17,6 +17,7 @@ $(function () {
 
     var socket = io();
     var yourColor = getRandomColor();
+    
     updateColor();
 
     $('form').submit(function () {
@@ -44,6 +45,8 @@ $(function () {
     socket.on('chat message', function (msg, color) {
         $('#messages').append($('<div>').html(msg).css("color", color));
         $('html, body').scrollTop($(document).height());
+        var audio = new Audio('clearly.mp3');
+        audio.play();
     });
 
     socket.on('user count', function (count) {
