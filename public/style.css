@@ -3,7 +3,10 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: black;
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(87,108,117,1) 0%, rgba(37,50,55,1) 100.2% );
+}
+body {
+  display: initial;
 }
 
 #messages {
@@ -11,10 +14,7 @@ body {
   padding: 0;
   color: white;
   font-size: 20px;
-  background-image: url("mobius2.png");
-  background-repeat: no-repeat; 
-  background-position-x: center;
-  background-attachment: fixed;
+
 }
 
 #messages div {
@@ -23,7 +23,7 @@ body {
 }
 
 #messages div:nth-child(odd) {
-  background: rgba(12, 12, 12, .7);
+  background: rgba(12, 12, 12, 0.2);
 }
 
 #messages {
@@ -42,8 +42,7 @@ form {
 input {
   width: 100%;
   resize: horizontal;
-  background-color: #151515;
-  /* color: whitesmoke; */
+  background-color: rgba(0, 0, 0, 0.5);
   font-size: 20px;
   padding: 8px;
   border: none;

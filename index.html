@@ -5,6 +5,9 @@
   <title>Chat</title>
   <link rel="icon" type="image/png" href="mobius2.png" />
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="chat.js"></script>
 </head>
 
 <body>
@@ -19,49 +22,7 @@
   </form>
 
 
-  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-  <script>
-    $(function () {
 
-      function getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-          color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-      }
-      var socket = io();
-      var yourColor = getRandomColor();
-
-      $('#m').css("color", yourColor);
-      $('#count').css("color", yourColor);
-      $('form').css("border-top", '1px solid ' + yourColor);
-      $('button').css("background-color", yourColor);
-
-
-      $('form').submit(function () {
-        if ($('#m').val()) {
-          socket.emit('chat message', $('#m').val(), yourColor);
-          $('#m').val('');
-        }
-        return false;
-      });
-      socket.on('chat message', function (msg, color) {
-        $('#messages').append($('<div>').html(msg).css("color", color));
-        window.scrollTo(0, document.body.scrollHeight);
-      });
-      socket.on('user count' , function(count){
-        $('#count').html(count);
-        window.document.title = "Chat: " + count + " users";
-      });
-      socket.on('refresh' , function(data){
-        console.log('refresh');
-        location.reload();
-      });
-    });
-  </script>
 </body>
 
 </html>
