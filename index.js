@@ -60,8 +60,6 @@ io.on('connection', function (socket) {
   });
 });
 
-
-
 setInterval(() => {
 
   if (io.engine.clientsCount !== userCount) {
