@@ -9,19 +9,19 @@ var isRefreshed = false;
 
 var links = [
   {
-    command: '!attendance',
+    command: '/attendance',
     link: '<a target="_blank" href="http://attendance.pscs.org">Attendance System</a>',
   },
   {
-    command: '!manifesto',
+    command: '/manifesto',
     link: '<a target="_blank" href="https://docs.google.com/document/d/1sAaruzhYcoHRRGTIGUbJcbn1MFx_zi3x4Urf1En2Ty4">Manifesto</a>',
   },
   {
-    command: '!pscsclicker',
+    command: '/pscsclicker',
     link: '<a target="_blank" href="https://coderlads.github.io/pscsclicker/">PSCS Clicker</a>',
   },
   {
-    command: '!proyecto',
+    command: '/proyecto',
     link: '<a href="https://www.dropbox.com/s/pmsa9eu4rzunvd2/proyecto_especial.zip?dl=1">Proyecto</a>',
   }
 ];
@@ -44,8 +44,8 @@ app.get('/count', function (req, res) {
 io.on('connection', function (socket) {
   io.emit('user count', userCount);
   socket.on('chat message', function (msg, color) {
-    if(msg === '!help'){
-      msg = "!help";
+    if(msg === '/help'){
+      msg = "/help";
       links.forEach(item => {
         msg += ", " + item.command;
       });

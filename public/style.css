@@ -28,7 +28,7 @@ body {
 }
 
 #messages {
-  margin-bottom: 75px
+  margin-bottom: 75px;
 }
 
 input {
@@ -47,8 +47,7 @@ button {
   border: none;
   padding: none;
   color: black;
-  border-radius: 0px 8px 0px 0px;
-  right: 10%;
+  right: 0%;
   bottom: 0%;
   position: fixed;
   font-size: 20px;
@@ -72,10 +71,8 @@ a {
   bottom: 0px;
   font-size: 25px;
   background-color: rgba(24, 32, 35, 0.8);
-  border-radius: 10px 10px 0px 0px;
-  width: 80%;
+  width: 100%;
   height: 70px;
-  right: 10%;
   border-style: solid;
-  border-width: 1px 1px 0px 1px;
+  border-width: 1px 0px 0px 0px;
 }

@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "main": "main.js",
   "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
   "description": "Anon Chat App",
   "author": {
-    "name": "riv"
+    "name": "Cabal"
   },
   "scripts": {
     "start": "electron .",
@@ -13,10 +18,12 @@
     "dist": "electron-builder"
   },
   "dependencies": {
-    "discord-rpc": "^3.1.1"
+    "discord-rpc": "^3.1.1",
+    "request": "latest"
   },
   "devDependencies": {
-    "electron": "^4.0.0-nightly.20181010"
+    "electron": "^4.0.0-nightly.20181010",
+    "electron-builder": "^22.7.0"
   },
   "build": {
     "appId": "com.chat.app",
@@ -25,9 +32,9 @@
       "target": "dmg",
       "icon": "icon.png"
     },
-    "win":{
+    "win": {
       "target": "msi",
-      "icon": "icon.png"
+      "icon": "build/icon.ico"
     }
   }
 }

@@ -23,6 +23,10 @@ function createWindow() {
 
 app.whenReady().then(createWindow)
 
+app.on('window-all-closed', () => {
+  app.quit();
+});
+
 const clientId = keys.discordId;
 
 DiscordRPC.register(clientId);
