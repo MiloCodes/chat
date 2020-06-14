@@ -28,6 +28,8 @@ $(function () {
                     yourColor = getRandomColor();
                 }
                 updateColor();
+            } else if ($('#m').val().startsWith("/refresh")) {
+                document.reload();
             } else if ($('#m').val().startsWith("/clear")) {
                 $('#messages').empty();
                 $('#messages').append($('<div>').html('Chat cleared.').css("color", yourColor));
